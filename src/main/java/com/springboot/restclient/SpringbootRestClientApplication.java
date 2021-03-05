@@ -15,22 +15,23 @@ import com.springboot.restclient.domain.Quote;
 @SpringBootApplication
 public class SpringbootRestClientApplication {
 
-	private static final Logger log = LoggerFactory.getLogger(SpringbootRestClientApplication.class);
-	
-	public static void main(String[] args) {
-		SpringApplication.run(SpringbootRestClientApplication.class, args);
-	}
+    private static final Logger log = LoggerFactory.getLogger(SpringbootRestClientApplication.class);
 
-	/*
-	 * @Bean public RestTemplate run(RestTemplateBuilder builder) { return
-	 * builder.build(); }
-	 */
-	
-	/*
-	 * @Bean public CommandLineRunner run(RestTemplate restTemplate) throws
-	 * Exception { return args -> { Quote quote =
-	 * restTemplate.getForObject("https://gturnquist-quoters.cfapps.io/api/random",
-	 * Quote.class); log.info(quote.toString()); }; }
-	 */
-	
+    public static void main(String[] args) {
+        SpringApplication.run(SpringbootRestClientApplication.class, args);
+
+    }
+
+
+     @Bean public RestTemplate run(RestTemplateBuilder builder) {
+        return builder.build();
+    }
+
+      @Bean public CommandLineRunner run(RestTemplate restTemplate) throws
+     Exception {
+        return args -> { Quote quote =
+      restTemplate.getForObject("https://gturnquist-quoters.cfapps.io/api/random",
+     Quote.class); log.info(quote.toString()); }; }
+
+
 }
